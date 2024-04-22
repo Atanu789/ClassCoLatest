@@ -1,0 +1,26 @@
+[
+    {
+        "src": "/fruits/py.png",
+        "matched": false
+    },
+    {
+        "src": "/fruits/rust.png",
+        "matched": false
+    },
+    {
+        "src": "/fruits/js.png",
+        "matched": false
+    },
+    {
+        "src": "/fruits/c++.png",
+        "matched": false
+    },
+    {
+        "src": "/fruits/react.png",
+        "matched": false
+    },
+    {
+        "src": "/fruits/mongo.png",
+        "matched": false
+    }
+]

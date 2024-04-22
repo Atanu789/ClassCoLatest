@@ -1,0 +1,84 @@
+/* Sidebar */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    background-color: #0605333e;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .sidebar-title {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #2c2c2c;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar-title:hover {
+    box-shadow: rgba(0, 255, 255, 0.4) 0px 2px 14px, rgba(0, 255, 255, 0.2) 0px -3px 0px inset;
+    /* transform: scale(1.06); */
+  }
+  
+  
+  .sidebar-title .sidebar-brand {
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -20px; 
+  }
+  
+  .toggle-sidebar-btn {
+    color: white;
+    cursor: pointer;
+    margin-left: auto;
+    /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 13px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+    transition: all 0.3s ease;
+  }
+  
+  .toggle-sidebar-btn:hover {
+    color: #12db94; 
+    box-shadow: rgba(0, 255, 255, 0.4) 0px 2px 14px, rgba(0, 255, 255, 0.3) 0px 13px 13px -3px, rgba(0, 255, 255, 0.2) 0px -3px 0px inset;
+    transform: scale(1.06);
+    border-radius: 30%;
+  }
+  
+  .sidebar-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-list-item {
+    padding: 20px 20px;
+    border-bottom: 1px solid #333333;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    transition: all 0.4s ease;
+  }
+  
+  .sidebar-list-item:hover {
+    background-color: #01b3ff3b; 
+    box-shadow: rgba(0, 255, 255, 0.4) 0px 2px 14px, rgba(0, 255, 255, 0.2) 10px -3px 10px inset;
+    transform: scale(1.08);
+  }
+  
+  .sidebar-list-item a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar-list-item .icon {
+    margin-right: 10px;
+  }
+  
+  /* Add gap between sidebar items */
+  .sidebar-list-item + .sidebar-list-item {
+    margin-top: 15px; /* Adjust as needed */
+  }
+  

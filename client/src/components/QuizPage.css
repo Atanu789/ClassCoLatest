@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.quiz {
+    background-color: rgba(3, 1, 24, 0.234);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-repeat: no-repeat;
+}
+
+.container index {
+    margin: auto;
+    font-size: 20px;
+}

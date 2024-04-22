@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #09456391;
+    z-index: 10;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 14px, rgba(0, 0, 0, 0.3) 0px 8px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    transition: all 0.3s ease;
+  }
+  
+  .header:hover {
+    box-shadow: rgba(0, 255, 255, 0.198) 0px 2px 14px, rgba(0, 255, 255, 0.172) 0px 13px 13px -3px, rgba(0, 255, 255, 0.099) 0px -3px 0px inset;
+    /* transform: scale(1.09); */
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease; /* Add smooth transition for transform */
+  }
+  
+  .icon:hover {
+    color: #00ffff; /* Change color on hover */
+    transform: scale(1.4);
+  }
+  
+  

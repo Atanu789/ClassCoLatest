@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;800&display=swap');
+
+
+
+.h1 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 4rem;
+}
+
+.game-block {
+    gap: 2rem;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.gamecard {
+    cursor: pointer;
+    width: 150px;
+    height: 170px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    transition: transform .7s;
+}
+
+.gamecard.matched {
+    transform: rotateY(180deg);
+}
+
+.gamecard img,
+.gamecard svg {
+    width: 70%;
+    position: absolute;
+    backface-visibility: hidden;
+    pointer-events: none;
+}
+
+.gamecard svg {
+    width: 100px;
+    height: 100px;
+    opacity: .3;
+}
+
+button {
+    border: none;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+
+button.start-game {
+    text-transform: uppercase;
+    font-weight: 800;
+    padding: 1.5rem 2rem;
+    letter-spacing: 2px;
+    font-size: 25px;
+    border-radius: 10px;
+}
+
+button.reset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 80px;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    border-radius: 50%;
+}

@@ -1,0 +1,79 @@
+.question-upload-container {
+    width: 70%;
+    margin: auto;
+  }
+  
+  .upload-header {
+    text-align: center;
+    margin-bottom: 20px;
+    
+  }
+  
+  .question-form {
+    width: 100%;
+  }
+  
+  .question {
+    margin-bottom: 20px;
+  }
+  
+  .question-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .question-input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .option {
+    margin-top: 10px;
+  }
+  
+  .option-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .option-input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .answer-label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .answer-input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .add-question-btn {
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-btn {
+    margin-top: 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }

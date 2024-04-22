@@ -1,0 +1,41 @@
+.fade-in {
+    animation: fadeIn 2s;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+
+/* Home.css */
+
+/* Gradient classes for different colors */
+.gradient-blue {
+    background: linear-gradient(135deg, #007bff, #00bfff);
+  }
+  
+  .gradient-green {
+    background: linear-gradient(135deg, #28a745, #32CD32);
+  }
+  
+  .gradient-yellow {
+    background: linear-gradient(135deg, #ffc107, #ffd700);
+  }
+  
+  .gradient-purple {
+    background: linear-gradient(135deg, #6a0dad, #8a2be2);
+  }
+  
+  .gradient-gray {
+    background: linear-gradient(135deg, #adb5bd, #ced4da);
+  }
+  
+  .gradient-red {
+    background: linear-gradient(135deg, #dc3545, #ff6347);
+  }
+  

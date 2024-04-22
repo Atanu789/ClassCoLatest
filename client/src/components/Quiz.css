@@ -1,0 +1,79 @@
+.container {
+  margin: auto;
+  margin-top: 40px;
+  background: #0a7e8058;
+  /* Dark background color */
+  color: #ffffff;
+  /* Text color for dark theme */
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  gap: 20px;
+  border-radius: 10px;
+  padding: 40px 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  /* Box shadow for depth */
+}
+
+.container hr {
+  height: 2px;
+  border: none;
+  background: #00ff15;
+  /* Line color for dark theme */
+}
+
+.container h2 {
+  font-size: 28px;
+  font-weight: 500;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.container ul li {
+  display: flex;
+  align-items: center;
+  height: 72px;
+  padding-left: 15px;
+  border: 1px solid #686868;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  transition: background-color 0.3s ease;
+  /* Transition effect for hover */
+}
+
+.container ul li:hover {
+  background-color: #4d4d4d;
+  /* Hover background color */
+}
+
+.container button {
+  margin: auto;
+  width: 230px;
+  height: 65px;
+  background: #553f9a;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  /* Transition effect for hover */
+}
+
+.container button:hover {
+  background-color: #00ff1a84;
+  /* Hover background color */
+}
+
+.correct {
+  background: rgb(11, 172, 11);
+  border-color: #262626;
+}
+
+.incorrect {
+  background: rgba(255, 0, 0, 0.746);
+  border-color: #2626;
+}

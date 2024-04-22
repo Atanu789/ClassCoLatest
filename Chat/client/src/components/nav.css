@@ -1,0 +1,40 @@
+.navbar {
+    background: linear-gradient(315deg,  rgba(3, 53, 48, 0.852) 3%, #095948 38%, #03352f 68%, #021311 98%);
+    height: 3.75rem;
+  }
+  
+  .navbar h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 15px;
+  }
+  
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+  
+  .navbar .text-warning {
+    color: #0ab913;
+    margin-right: 15px;
+  }
+  
+  .navbar .notification-icon {
+    color: #0cc009;
+    font-size: 1.2rem;
+    margin-right: 15px;
+  }
+  
+  .navbar .logout-link {
+    margin-right: 15px;
+  }
+  
+  .navbar .logout-link:hover {
+    text-decoration: underline;
+  }
+  
