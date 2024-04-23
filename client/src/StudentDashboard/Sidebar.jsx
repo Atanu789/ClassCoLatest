@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+
+
+import { useState } from 'react';
 import {
   BsGrid1X2Fill,
   BsFillGrid3X3GapFill,
@@ -10,11 +12,17 @@ import {
 } from 'react-icons/bs';
 import '../StudentApp.css';
 
-import './Side.css'; // Import the CSS file
+import './Side.css'
+
 
 function Sidebar({ openSidebarToggle, OpenSidebar }) {
   const [isHovered, setIsHovered] = useState(false);
   const [sidebarHidden, setSidebarHidden] = useState(false);
+
+  const storedStudentId = localStorage.getItem('studentId');
+  const Id = storedStudentId.replace(/"/g, "");
+
+
 
   const sidebarStyle = {
     backgroundColor: isHovered ? '#0605333e' : '#0605333e',
@@ -43,62 +51,61 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
         >
           <BsX />
         </div>
-
-        
       </div>
       <ul className='sidebar-list'>
         <li className='sidebar-list-item'>
-          <a href="/Stud" className='flex'>
+          <a href={`/Stud/${Id}`} className='flex'>
             <BsGrid1X2Fill className='icon' />
             Dashboard
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="/notes"  className='flex'>
+          <a href={`/Stud/${Id}/notes`} className='flex'>
             <BsFillGrid3X3GapFill className='icon' />
             Take Notes
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="/Startquiz "  className='flex'>
+          <a href={`/Stud/${Id}/Startquiz`} className='flex'>
             <BsPeopleFill className='icon' />
             Attempt Quiz
           </a>
         </li>
+
         <li className='sidebar-list-item'>
-          <a href="/assignment"  className='flex'>
+          <a href={`/Stud/${Id}/assignment`} className='flex'>
             <BsListCheck className='icon' />
             Assignment
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="/Voca"  className='flex'>
+          <a href={`/Stud/${Id}/Voca`} className='flex'>
             <BsGrid1X2Fill className='icon' />
             Word Challenge
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="/fruitGame"  className='flex'>
+          <a href="/Stud/${Id}/fruitGame" className='flex'>
             <BsMenuButtonWideFill className='icon' />
-           Memory Games
+            Memory Games
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="http://localhost:8001/chat "  className='flex'>
+          <a href="http://localhost:8001/chat " className='flex'>
             <BsPeopleFill className='icon' />
             Chat
           </a>
         </li>
         <li className='sidebar-list-item'>
-          <a href="/settings"  className='flex'>
+          <a href="/settings" className='flex'>
             <BsFillGearFill className='icon' />
             Settings
           </a>
         </li>
       </ul>
-      
+
     </aside>
   );
 }
-
 export default Sidebar;
+

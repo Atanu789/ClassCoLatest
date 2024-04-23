@@ -2,6 +2,17 @@ import React from 'react';
 import Header from '../StudentDashboard/Header';
 
 const StartQuiz = () => {
+  const storedStudentId = localStorage.getItem('studentId');
+  const Id = storedStudentId.replace(/"/g, "");
+  console.log(Id);
+
+  const handleClick = () => {
+    if (Id) {
+      window.location.href = `/Stud/${Id}/quiz`;
+    } else {
+      console.error("Student ID is not available.");
+    }
+  };
   return (
     <>
       <Header />
@@ -68,9 +79,9 @@ const StartQuiz = () => {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <a href="/quiz" className="start-button inline-block bg-green-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style={{ fontSize: '1.5rem' }}>
+          <button onClick={handleClick} className="start-button inline-block bg-green-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style={{ fontSize: '1.5rem', cursor: 'pointer' }}>
             Start
-          </a>
+          </button>
         </div>
 
       </div>

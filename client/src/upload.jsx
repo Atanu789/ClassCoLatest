@@ -4,9 +4,11 @@ import Input from "./components/Input";
 import Button from "./components/Button";
 import { useNavigate } from "react-router-dom";
 import "./upload.css";
+import { useStudentId } from "./context/StudentIdContext";
 
 export default function Component() {
   const navigate = useNavigate();
+  const { updateStudentId } = useStudentId(); // Using the context hook to access studentId
 
   const [studentFullname, setStudentFullname] = useState("");
   const [studentEmail, setStudentEmail] = useState("");
@@ -41,13 +43,18 @@ export default function Component() {
           instituteName: studentInst,
         }
       );
+     
+
+      // Update studentId in the context
+     
+
+      // Store data in localStorage
       
-      localStorage.setItem("studentId", JSON.stringify(studentId));
       localStorage.setItem("studentName", JSON.stringify(studentFullname));
       localStorage.setItem("studentEmail", JSON.stringify(studentEmail));
       localStorage.setItem("studentUsername", JSON.stringify(studentUsername));
 
-      navigate('/Stud');
+      
       console.log("Student registration successful", response.data);
     } catch (error) {
       console.error("Student registration error: ", error);

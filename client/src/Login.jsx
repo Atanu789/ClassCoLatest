@@ -75,6 +75,9 @@ function Login() {
                     email: email
                 }
             );
+            const { data } = response;
+      const { _id } = data.data;
+            localStorage.setItem("studentId", JSON.stringify(_id));
     
             console.log(response.data);
             const accessToken = response.data.statusCode.accessToken;
@@ -95,9 +98,9 @@ function Login() {
             console.error(err.response.data);
             if (!err.response) {
                 setErrMsg('No Server Response');
-            } else if (err.response.status === 400) {
-                setErrMsg('Missing Username, Password, or Email');
             } else if (err.response.status === 401) {
+                setErrMsg('Missing Username, Password, or Email');
+            } else if (err.response.status === 400) {
                 setErrMsg('Unauthorized');
             } else {
                 setErrMsg('Login Failed');
@@ -113,7 +116,7 @@ function Login() {
                     <h1>You are logged in!</h1>
                     <br />
                     <p>
-                        <a href="/Stud">Go to Home</a>
+                        <a href="/Stud/${_id}">Go to Home</a>
                     </p>
                 </section>
             ) : (
