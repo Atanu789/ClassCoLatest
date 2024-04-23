@@ -29,22 +29,22 @@ function App() {
       <Routes>
       <Route path="/Teach" element={<Teacher/>} />
       <Route path="/uploadAssign" element={<AssignmentUpload/>}/>
-      <Route path="/Voca" element={<Vocab/>}/>
+      <Route path="/Stud/:studentId/Voca" element={<Vocab/>}/>
       <Route path="/teachquiz" element={<QuestionUpload/>}/>
 <Route path="/login" element={<Login2/>}/>
 
     
         <Route path="/" element={<Component/>}/>
        
-        <Route path="/Stud/${id}" element={<Student/>} />
-        <Route path="/notes" element={<NoteSection/>}/>
-        <Route path="/Startquiz" element={<StartQuiz/>}/>
-        <Route path='/quiz' element={<QuizPage/>}/>
+        <Route path="/Stud/:studentId" element={<Student/>} />
+        <Route path="/Stud/:studentId/notes" element={<NoteSection/>}/>
+        <Route path="/Stud/:studentId/Startquiz" element={<StartQuiz/>}/>
+        <Route path='/Stud/:studentId/quiz' element={<QuizPage/>}/>
        
-        <Route path='/assignment' element={<Assignments/>}/>
-         <Route path='/todo' element={<Todo/>}/>
+        <Route path='/Stud/:studentId/assignment' element={<Assignments/>}/>
+         <Route path='/Stud/:studentId/todo' element={<Todo/>}/>
         <Route path="/QRCodegenerator" element={<QR/>}/>
-        <Route path='/fruitGame' element={<Fruit/>}/>
+        <Route path='/Stud/:studentId/fruitGame' element={<Fruit/>}/>
         <Route path="/Manage" element={<ManageStud/>}/>
         <Route/>
         </Routes>
