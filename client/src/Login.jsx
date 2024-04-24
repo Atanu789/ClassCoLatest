@@ -1,23 +1,24 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import AuthContext from './context/AuthProvider';
 import Cookies from 'js-cookie';
-
-
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 function Login() {
-    
     const { setAuth } = useContext(AuthContext);
-
     const userRef = useRef();
     const errRef = useRef();
 
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
     const [email, setEmail] = useState('');
-
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
+    const [_id, setId] = useState(''); // Define _id state
+    const navigate = useNavigate();
+
+    // useEffect(() => {
 
     useEffect(() => {
         userRef.current.focus();
@@ -27,87 +28,60 @@ function Login() {
         setErrMsg('');
     }, [user, pwd, email]);
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     try {
-    //         const response = await axios.post(
-    //             `http://localhost:8000/api/v1/students/login`,
-    //             {
-    //                 username: user,
-    //                 password: pwd,
-    //                 email: email
-    //             }
-    //         );
-
-    //         console.log(response.data);
-    //         const accessToken = response.data.accessToken;
-
-    //         setAuth({ user, pwd, email, accessToken });
-    //         setUser('');
-    //         setPwd('');
-    //         setEmail('');
-    //         setSuccess(true);
-        
-    //     } catch (err) {
-    //         console.error(err.response.data);
-    //         if (!err.response) {
-    //             setErrMsg('No Server Response');
-    //         } else if (err.response.status === 400) {
-    //             setErrMsg('Missing Username, Password, or Email');
-    //         } else if (err.response.status === 401) {
-    //             setErrMsg('Unauthorized');
-    //         } else {
-    //             setErrMsg('Login Failed');
-    //         }
-    //         errRef.current.focus();
-    //     }
-    // };
     const handleSubmit = async (e) => {
-        e.preventDefault();
+    e.preventDefault();
     
-        try {
-            const response = await axios.post(
-                `http://localhost:8000/api/v1/students/login`,
-                {
-                    username: user,
-                    password: pwd,
-                    email: email
-                }
-            );
-            const { data } = response;
-      const { _id } = data.data;
-            localStorage.setItem("studentId", JSON.stringify(_id));
-    
-            console.log(response.data);
-            const accessToken = response.data.statusCode.accessToken;
-            const refreshToken=response.data.statusCode.refreshToken    
-            // Store access token in cookie
-            Cookies.set('accessToken', accessToken, { expires: 2});
-            // Store refresh token in cookie
-            Cookies.set('refreshToken', refreshToken, { expires: 2});
-             // Expires in 1 day
-    
-            setAuth({ user, pwd, email, accessToken ,refreshToken});
-            setUser('');
-            setPwd('');
-            setEmail('');
-            setSuccess(true);
-        
-        } catch (err) {
-            console.error(err.response.data);
-            if (!err.response) {
-                setErrMsg('No Server Response');
-            } else if (err.response.status === 401) {
-                setErrMsg('Missing Username, Password, or Email');
-            } else if (err.response.status === 400) {
-                setErrMsg('Unauthorized');
-            } else {
-                setErrMsg('Login Failed');
+    try {
+        const response = await axios.post(
+            `http://localhost:8000/api/v1/students/login`,
+            {
+                username: user,
+                password: pwd,
+                email: email
             }
-            errRef.current.focus();
+        );
+
+        console.log(response.data);
+        
+        const  accessToken= response.data.statusCode.accessToken;
+        const  refreshToken= response.data.statusCode.refreshToken;
+        console.log("accessToken", accessToken);
+        console.log("refreshToken", refreshToken);
+        const userId = response.data.statusCode.user._id; // Access _id from user object
+        console.log("userId",userId)
+        console.log(response.data.data._id)
+
+        // Save userId to local storage
+        localStorage.setItem("studentId", userId);
+
+        // Store access token in cookie
+        Cookies.set('accessToken', accessToken, { expires: 2 });
+        // Store refresh token in cookie
+        Cookies.set('refreshToken', refreshToken, { expires: 2 });
+
+        setAuth({ user, pwd, email, accessToken, refreshToken });
+        setUser(''); 
+        setPwd('');
+        setEmail('');
+        setSuccess(true);
+
+        navigate(`/Stud/${userId}`); // Navigate to the specified path
+
+    } catch (err) {
+        console.error(err.response.data);
+        if (!err.response) {
+            setErrMsg('No Server Response');
+        } else if (err.response.status === 401) {
+            setErrMsg('Missing Username, Password, or Email');
+        } else if (err.response.status === 400) {
+            setErrMsg('Unauthorized');
+        } else {
+            setErrMsg('Login Failed');
         }
-    };
+        errRef.current.focus();
+    }
+};
+
     
     return (
         <>
@@ -115,9 +89,7 @@ function Login() {
                 <section>
                     <h1>You are logged in!</h1>
                     <br />
-                    <p>
-                        <a href="/Stud/${_id}">Go to Home</a>
-                    </p>
+                   
                 </section>
             ) : (
                 

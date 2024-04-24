@@ -43,25 +43,18 @@ export default function Component() {
           instituteName: studentInst,
         }
       );
-     
-
-      // Update studentId in the context
-     
-
-      // Store data in localStorage
-      
+  
       localStorage.setItem("studentName", JSON.stringify(studentFullname));
       localStorage.setItem("studentEmail", JSON.stringify(studentEmail));
       localStorage.setItem("studentUsername", JSON.stringify(studentUsername));
-
-      
+      navigate('/login');
+  
       console.log("Student registration successful", response.data);
     } catch (error) {
-      console.error("Student registration error: ", error);
+      console.error("Student registration error: ", error.response ? error.response.data : error);
       setStudentError("Failed to register student. Please try again.");
     }
   };
-
   const createTeacher = async (event) => {
     event.preventDefault();
     setTeacherError("");
