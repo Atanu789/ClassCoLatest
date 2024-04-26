@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Header from '../TeacherComponents/Header';
+import Header from '../StudentDashboard/Header';
 
 
 function Assignments() {
