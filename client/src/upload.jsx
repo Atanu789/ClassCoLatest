@@ -44,9 +44,9 @@ export default function Component() {
         }
       );
   
-      localStorage.setItem("studentName", JSON.stringify(studentFullname));
+     
       localStorage.setItem("studentEmail", JSON.stringify(studentEmail));
-      localStorage.setItem("studentUsername", JSON.stringify(studentUsername));
+    
       navigate('/login');
   
       console.log("Student registration successful", response.data);

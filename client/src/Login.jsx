@@ -50,7 +50,12 @@ function Login() {
         console.log("refreshToken", refreshToken);
         const userId = response.data.statusCode.user._id; // Access _id from user object
         console.log("userId",userId)
-        console.log(response.data.data._id)
+        const fullName= response.data.statusCode.user.fullName;
+        console.log("fullName",fullName)
+        localStorage.setItem("studentName", JSON.stringify(fullName));
+        const studentUsername= response.data.statusCode.user.username;
+        console.log("studentUsername",studentUsername)
+        localStorage.setItem("studentUsername", JSON.stringify(studentUsername));
 
         // Save userId to local storage
         localStorage.setItem("studentId", userId);
