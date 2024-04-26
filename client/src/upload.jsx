@@ -47,7 +47,7 @@ export default function Component() {
      
       localStorage.setItem("studentEmail", JSON.stringify(studentEmail));
     
-      navigate('/login');
+      navigate('/Login');
   
       console.log("Student registration successful", response.data);
     } catch (error) {

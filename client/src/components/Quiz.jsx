@@ -74,7 +74,7 @@ function Quiz() {
 
 
   useEffect(() => {
-    bgmAudio.current.volume = 1; // Adjust the volume of the background sound if needed
+    bgmAudio.current.volume = 3; // Adjust the volume of the background sound if needed
     bgmAudio.current.loop = true; // Make the background sound loop continuously
     bgmAudio.current.play(); // Start playing the background sound
     return () => {

@@ -145,7 +145,7 @@ function Login() {
                     <p>
                         Need an Account?<br />
                         <span className='line'>
-                            <a href='/'>Sign Up</a>
+                            <a href='/sign-up'>Sign Up</a>
                         </span>
                     </p>
                 </section>

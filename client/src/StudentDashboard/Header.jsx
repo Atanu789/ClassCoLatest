@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BsFillBellFill,
   BsFillEnvelopeFill,
@@ -15,6 +15,10 @@ import "./Header.css";
 import Logout from "../Logout";
 
 function Header({ OpenSidebar }) {
+
+    const storedStudentId  = localStorage.getItem("studentId");
+  const Id = storedStudentId.replace(/"/g, "");
+
   return (
     <header className="header">
       <div className="grid grid-cols-6 grid-rows-1 gap-4 mr-20">
@@ -29,7 +33,7 @@ function Header({ OpenSidebar }) {
         <div className="flex gap-5">
           <BsSearch className="icon mt-2" />
           <BsFillBellFill className="icon mt-2" />
-          <a href="/todo">
+          <a href={`/Stud/${Id}/todo`}>
             <img className="icon mt-[7px]" src={TodoIcon} alt="Todo Icon" />
           </a>
           <Example1 />

@@ -33,10 +33,11 @@ function App() {
       <Route path="/uploadAssign" element={<AssignmentUpload/>}/>
       <Route path="/Stud/:studentId/Voca" element={<Vocab/>}/>
       <Route path="/teachquiz" element={<QuestionUpload/>}/>
-<Route path="/login" element={<Login/>}/>
+
 
     
-        <Route path="/" element={<Component/>}/>
+        <Route path="/" element={<Login/>}/>
+         <Route path="/sign-up" element={<Component/>}/>
        
         <Route path="/Stud/:studentId" element={<Student/>} />
         <Route path="/Stud/:studentId/notes" element={<NoteSection/>}/>
@@ -48,7 +49,7 @@ function App() {
         <Route path="/QRCodegenerator" element={<QR/>}/>
         <Route path='/Stud/:studentId/fruitGame' element={<Fruit/>}/>
         <Route path="/Manage" element={<ManageStud/>}/>
-        <Route path="/Login" element={<Logout/>}/>
+        <Route path="/Login" element={<Login/>}/>
         <Route/>
         </Routes>
      
