@@ -17,7 +17,9 @@ import QuizPage from './components/QuizPage';
 import Fruit from './components/Memorygames/fruits';
 import ManageStud from './TeacherComponents/Manage_Stud';
 
-import Login2 from './Login2';
+
+import Login from './Login';
+import Logout from './Logout';
 
 
 
@@ -31,7 +33,7 @@ function App() {
       <Route path="/uploadAssign" element={<AssignmentUpload/>}/>
       <Route path="/Stud/:studentId/Voca" element={<Vocab/>}/>
       <Route path="/teachquiz" element={<QuestionUpload/>}/>
-<Route path="/login" element={<Login2/>}/>
+<Route path="/login" element={<Login/>}/>
 
     
         <Route path="/" element={<Component/>}/>
@@ -46,6 +48,7 @@ function App() {
         <Route path="/QRCodegenerator" element={<QR/>}/>
         <Route path='/Stud/:studentId/fruitGame' element={<Fruit/>}/>
         <Route path="/Manage" element={<ManageStud/>}/>
+        <Route path="/Login" element={<Logout/>}/>
         <Route/>
         </Routes>
      

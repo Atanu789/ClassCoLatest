@@ -9,7 +9,7 @@ router.route("/register").post(
     registerStudent
 )
 router.route("/login").post(loginUser)
-router.route("/logout").post(verifyJWT,  logoutUser)
+router.route("/logout").post(verifyJWT, logoutUser)
 router.route("/getStudents").get(getAllStudents);
 router.route("/find/:userId").get(findUser);
 

@@ -57,7 +57,7 @@ const registerStudent = asyncHandler(async (req, res) => {
   });
 
   const createdStudentUser = await Student.findById(studentUser._id).select(
-    "-password -refreshToken",
+    "-password ",
   );
   if (!createdStudentUser) {
     throw new ApiError(400, "Error while registering Student in database");
@@ -109,13 +109,15 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 
   const { accessToken, refreshToken } = await generateAccessAndRefereshTokens(user._id);
-  const loggedInUser = await Student.findById(user._id).select("-password -refreshToken");
+  const loggedInUser = await Student.findById(user._id).select("-password ");
 
   const options = {
       httpOnly: true,
       secure: true
   };
-  console.log(req.cookie);
+  console.log(req.cookies);
+  console.log("accessToken",accessToken);
+  console.log("refreshToken",refreshToken);
 
   return res.status(200)
   
@@ -133,30 +135,39 @@ const loginUser = asyncHandler(async (req, res) => {
       );
 });
 
-const logoutUser = asyncHandler(async (req, res) => {
-  await Student.findByIdAndUpdate(
-    req.user._id,
-    {
-      $unset: {
-        refreshToken: 1,
-      },
-    },
-    {
-      new: true,
-    },
-  );
 
+ const logoutUser = asyncHandler(async (req, res) => {
+  // Remove refreshToken from the database
+  await Student.findByIdAndUpdate(
+      req.user._id,
+      {
+          $unset: {
+              refreshToken: 1,
+          },
+      },
+      {
+          new: true,
+      }
+  );
+  console.log(req.user._id);
+
+  // Clear cookies
   const options = {
-    httpOnly: true,
-    secure: true,
+      httpOnly: true,
+      secure: true,
   };
 
-  return res
-    .status(200)
-    .clearCookie("accessToken", options)
-    .clearCookie("refreshToken", options)
-    .json(new ApiResponse(200, {}, "Student logged out successfully"));
+  res
+      .clearCookie("accessToken", options)
+      .clearCookie("refreshToken", options);
+
+  // Send response
+  return res.status(200).json({
+      success: true,
+      message: "Student logged out successfully",
+  });
 });
+
 const findUser = async (req, res) => {
   const userId = req.params.userId;
   try {

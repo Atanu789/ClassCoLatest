@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 
 function Login() {
-    const { setAuth } = useContext(AuthContext);
+  
     const userRef = useRef();
     const errRef = useRef();
 
@@ -17,6 +17,7 @@ function Login() {
     const [success, setSuccess] = useState(false);
     const [_id, setId] = useState(''); // Define _id state
     const navigate = useNavigate();
+    
 
     // useEffect(() => {
 
@@ -53,13 +54,14 @@ function Login() {
 
         // Save userId to local storage
         localStorage.setItem("studentId", userId);
+        
 
         // Store access token in cookie
         Cookies.set('accessToken', accessToken, { expires: 2 });
         // Store refresh token in cookie
         Cookies.set('refreshToken', refreshToken, { expires: 2 });
 
-        setAuth({ user, pwd, email, accessToken, refreshToken });
+       
         setUser(''); 
         setPwd('');
         setEmail('');

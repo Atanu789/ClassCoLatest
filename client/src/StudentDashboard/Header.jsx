@@ -12,6 +12,7 @@ import Example from "./Dropdown";
 import Example2 from "./Drop";
 import Example1 from "./ProfileDropdown";
 import "./Header.css";
+import Logout from "../Logout";
 
 function Header({ OpenSidebar }) {
   return (
@@ -19,6 +20,9 @@ function Header({ OpenSidebar }) {
       <div className="grid grid-cols-6 grid-rows-1 gap-4 mr-20">
         <Example2 />
         <Example />
+        <Logout/>
+       
+
       </div>
 
       <div className="flex gap-2 justify-center items-center p-3">
