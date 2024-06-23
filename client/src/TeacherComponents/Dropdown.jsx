@@ -11,12 +11,22 @@ function classNames(...classes) {
 export default function Example() {
   const [isOpen, setIsOpen] = useState(false);
     const [userName,setUserName] = useState("")
+    const [dp,setDp] = useState("https://static.vecteezy.com/system/resources/thumbnails/009/734/564/small/default-avatar-profile-icon-of-social-media-user-vector.jpg");
   useEffect(()=>{
 const UserName = localStorage.getItem("teacherUsername");
    if(UserName){
    const  username = UserName.replace(/"/g , "");
     console.log(username)
     setUserName(username)
+    async function fetchData(){
+      const response = await fetch(`http://localhost:8000/api/v1/teachers/getOneTeacher/${username}`);
+      const curr = await response.json();
+      if(curr&&curr.data.dp){
+        console.log("DpLinks :",curr.data.dp)
+      setDp(curr.data.dp);
+      }
+    }
+    fetchData();
    }
   },[])
   return (
@@ -50,7 +60,7 @@ const UserName = localStorage.getItem("teacherUsername");
 
             </Menu.Item> */}
             <div className='m-2'>
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/009/734/564/small/default-avatar-profile-icon-of-social-media-user-vector.jpg" className='rounded-full size-16 ml-2 '/>
+            <img src={dp} className='rounded-full size-16 ml-2 '/>
            <h1 className='mt-2
           '>{userName}</h1>
            </div>

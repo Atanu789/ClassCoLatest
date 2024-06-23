@@ -62,6 +62,13 @@ const registerTeacher = asyncHandler(async (req, res) => {
     instituteName,
   });
 
+  if(req.file){
+    const currTeacher= await Teacher.findById(teacherUser._id);
+    console.log(req.file.path);
+    currTeacher.dp=req.file.path;
+    currTeacher.save();
+  }
+
   const createdTeacherUser = await Teacher.findById(teacherUser._id).select(
     "-password -refreshToken"
   );
@@ -146,4 +153,28 @@ const logoutUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, {}, "Teacher logged out successfully"));
 });
 
-export { registerTeacher, loginUser, logoutUser };
+const findTeacherByUsername = asyncHandler(async (req, res) => {
+  const { userName } = req.params;
+  try {
+    const teacher = await Teacher.findOne({ username:userName });
+    if (!teacher) {
+      throw new ApiError(404, "teacher not found");
+    }
+    res
+      .status(200)
+      .json(new ApiResponse(200, teacher, "teacher found successfully"));
+  } catch (error) {
+    console.log(error);
+    res
+      .status(error.statusCode || 500)
+      .json(
+        new ApiResponse(
+          error.statusCode || 500,
+          null,
+          error.message || "Internal Server Error",
+        ),
+      );
+  }
+});
+
+export { registerTeacher, loginUser, logoutUser,findTeacherByUsername };

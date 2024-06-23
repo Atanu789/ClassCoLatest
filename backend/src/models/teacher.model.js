@@ -2,6 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const teacherSchema = new Schema(
   {
+    dp:String,
     username: {
       type: String,
       required: true,

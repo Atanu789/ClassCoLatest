@@ -3,20 +3,29 @@ import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import CalendarApp from '../components/Calender'
 import { ImUser } from "react-icons/im";
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Example1() {
   const [isOpen, setIsOpen] = useState(false);
- const [userName,setUserName] = useState("")
+ const [userName,setUserName] = useState("");
+ const [dp,setDp] = useState("https://static.vecteezy.com/system/resources/thumbnails/009/734/564/small/default-avatar-profile-icon-of-social-media-user-vector.jpg");
   useEffect(()=>{
 const UserName = localStorage.getItem("studentUsername");
    if(UserName){
    const  username = UserName.replace(/"/g , "");
     console.log(username)
-    setUserName(username)
+    setUserName(username);
+    async function fetchData(){
+      const response = await fetch(`http://localhost:8000/api/v1/students/getOneStudents/${username}`);
+      const curr = await response.json();
+      if(curr&&curr.data.dp){
+        console.log("DpLinks :",curr.data.dp)
+      setDp(curr.data.dp);
+      }
+    }
+    fetchData();
    }
   },[])
   return (
@@ -44,13 +53,13 @@ const UserName = localStorage.getItem("studentUsername");
         leaveTo="opacity-0 translate-y-[-30%]"
       >
         <Menu.Items className="absolute left-0 z-10 mt-3 ">
-          <div className="py-1 bg-black rounded-lg  size-28 content-center flex justify-center ">
+          <div className="py-1 bg-black rounded-lg  size-30 content-center flex justify-center ">
             {/* <Menu.Item>
               <CalendarApp />
 
             </Menu.Item> */}
             <div className='m-2'>
-            <img src="https://static.vecteezy.com/system/resources/thumbnails/009/734/564/small/default-avatar-profile-icon-of-social-media-user-vector.jpg" className='rounded-full size-16 ml-2 '/>
+            <img src={dp} className='rounded-full size-20 ml-2 '/>
            <h1 className='mt-2
           '>{userName}</h1>
            </div>
