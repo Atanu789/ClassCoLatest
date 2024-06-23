@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 const studentSchema = new Schema(
   {
+    dp:String,
     username: {
       type: String,
       required: true,
