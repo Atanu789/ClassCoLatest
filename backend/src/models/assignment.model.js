@@ -35,7 +35,9 @@ const assignmentSchema = new Schema(
     status:{
       type:Boolean,
       default:false
-    }
+    },
+    solution:[String],
+    vidSolution:[String],
   },
   {
     timestamps: true,

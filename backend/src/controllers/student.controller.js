@@ -23,6 +23,7 @@ const generateAccessAndRefereshTokens = async (userId) => {
   }
 };
 const registerStudent = asyncHandler(async (req, res) => {
+  console.log(req.file);
   const { fullName, email, username, password, studentId, instituteName } =
     req.body;
 
@@ -55,7 +56,12 @@ const registerStudent = asyncHandler(async (req, res) => {
     studentId,
     instituteName,
   });
-
+  if(req.file){
+    const currStudent= await Student.findById(studentUser._id);
+    console.log(req.file.path);
+    currStudent.dp=req.file.path;
+    currStudent.save();
+  }
   const createdStudentUser = await Student.findById(studentUser._id).select(
     "-password ",
   );
@@ -189,19 +195,10 @@ const findUser = async (req, res) => {
       );
   }
 };
-const getAllStudents = asyncHandler(async (req, res) => {
-  const students = await Student.find();
-  res
-    .status(200)
-    .json(new ApiResponse(200, students, "All students fetched successfully"));
-});
-
 const findStudentByUsername = asyncHandler(async (req, res) => {
   const { userName } = req.params;
-  console.log(userName);
   try {
-    const student = await Student.findOne({ userName });
-    console.log(student);
+    const student = await Student.findOne({ username:userName });
     if (!student) {
       throw new ApiError(404, "Student not found");
     }
@@ -221,6 +218,15 @@ const findStudentByUsername = asyncHandler(async (req, res) => {
       );
   }
 });
+
+const getAllStudents = asyncHandler(async (req, res) => {
+  const students = await Student.find();
+  res
+    .status(200)
+    .json(new ApiResponse(200, students, "All students fetched successfully"));
+});
+
+
 
 export {
   registerStudent,
