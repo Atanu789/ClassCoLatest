@@ -16,10 +16,12 @@ import StartQuiz from './components/StartQuiz';
 import QuizPage from './components/QuizPage';
 import Fruit from './components/Memorygames/fruits';
 import ManageStud from './TeacherComponents/Manage_Stud';
+import Reward from './TeacherComponents/RewardSection/Reward'
 
 
 import Login from './Login';
 import Logout from './Logout';
+import QuizPreview from './TeacherComponents/PreviewQuiz';
 
 
 
@@ -33,6 +35,8 @@ function App() {
       <Route path="/uploadAssign" element={<AssignmentUpload/>}/>
       <Route path="/Stud/:studentId/Voca" element={<Vocab/>}/>
       <Route path="/teachquiz" element={<QuestionUpload/>}/>
+      <Route path="/previewquiz" element={<QuizPreview/>}/>
+      <Route path="/rewards" element={<Reward/>}/>
 
 
     

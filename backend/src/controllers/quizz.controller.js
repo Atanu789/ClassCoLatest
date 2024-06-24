@@ -48,7 +48,28 @@ const getQuizz = asyncHandler(async (req,res)=>{
   }
 })
 
+const getQuizzesGroupedByDate = asyncHandler(async (req, res) => {
+  const quizzes = await Quizz.find({}).sort({ createdAt: 1 });
+
+  if (!quizzes.length) {
+    throw new ApiError(404, "No quizzes found");
+  }
+
+  const quizzesGroupedByDate = quizzes.reduce((acc, quiz) => {
+    const date = quiz.createdAt.toISOString().split('T')[0];
+    if (!acc[date]) {
+      acc[date] = [];
+    }
+    acc[date].push(quiz);
+    return acc;
+  }, {});
+  return res
+.status(200).
+json(new ApiResponse(200, quizzesGroupedByDate, "Quizzes retrieved successfully"));
+});
+
 export {
     giveQuiz,
-    getQuizz
+    getQuizz,
+    getQuizzesGroupedByDate
 }
