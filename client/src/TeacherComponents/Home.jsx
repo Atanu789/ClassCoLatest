@@ -15,6 +15,7 @@ import {
 } from "recharts";
 
 import Calendar from "../components/Calender";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
     const [user,setUser] = useState("")
@@ -26,6 +27,15 @@ function Home() {
     { name: "ExtraCurricular", Class9: 40 },
     { name: "Quiz", Class9: 80 },
   ];
+
+  const navigate=useNavigate();
+
+  const PreviewQuiz=()=>{
+    navigate("/previewquiz");
+  }
+  const giveRewards=()=>{
+    navigate("/rewards");
+  }
   
   useEffect(() => {
   const User = localStorage.getItem("teacherName");
@@ -86,14 +96,14 @@ function Home() {
           onMouseEnter={() => setIsHovered1(true)}
           onMouseLeave={() => setIsHovered1(false)}
         >
-          <div
+          <button onClick={giveRewards}
             className="bg-gray-800 rounded-lg p-5 flex flex-col justify-center items-center shadow-lg"
             style={{ ...cardStyle, background: "#2c2c2c", color: "aqua" }}
           >
             <BsFillTrophyFill className="card_icon text-4xl ml-auto text-yellow-500" />
             <h2 className="text-3xl font-bold">56</h2>
-            <h2>Students Notes Overview </h2>
-          </div>
+            <h2>Students Certification </h2>
+          </button>
         </div>
 
         <div
@@ -102,14 +112,14 @@ function Home() {
           onMouseEnter={() => setIsHovered2(true)}
           onMouseLeave={() => setIsHovered2(false)}
         >
-          <div
+          <button onClick={PreviewQuiz}
             className="bg-gray-800 rounded-lg p-5 flex flex-col justify-center items-center shadow-lg"
             style={{ ...cardStyle, background: "#2c2c2c", color: "aqua" }}
           >
             <GiLevelFour className="card-icon text-4xl ml-auto text-blue-500" />
             <h2 className="text-3xl font-bold">3</h2>
             <h2>Preview Quiz </h2>
-          </div>
+          </button>
         </div>
 
         <div
